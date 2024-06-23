@@ -12,20 +12,27 @@ class RegisterAPI(APIView):
     permission_classes = [AllowAny]
 
     def post(self, request):
-        serializer = RegisterSerializer(data = request.data)
+        data = request.data
+
+        serializer = RegisterSerializer(data = data)
 
         if not serializer.is_valid():
             return Response({'message' : serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         
         serializer.save()
 
-        return Response({'message' : 'User created'}, status=status.HTTP_201_CREATED)
+        user = authenticate(username = data['username'], password = data['password'])
+
+        token, _  = Token.objects.get_or_create(user = user)
+
+        return Response({'message' : 'User created', 'token' : str(token)}, status=status.HTTP_201_CREATED)
 
 class LoginAPI(APIView):
     permission_classes = [AllowAny]
 
     def post(self, request):
         data = request.data
+        print(data)
         serializer = LoginSerializer(data = data)
 
         if not serializer.is_valid():
@@ -34,7 +41,7 @@ class LoginAPI(APIView):
         user = authenticate(username = data['username'], password = data['password'])
 
         if not user:
-            return Response({'message' : 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+            return Response({'message' : 'Invalid credentials'}, status=status.HTTP_200_OK)
 
         token, _  = Token.objects.get_or_create(user = user)
 
