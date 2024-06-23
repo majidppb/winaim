@@ -68,7 +68,7 @@ class CustomersWidget extends StatelessWidget {
         ),
       );
     }
-
+    await getSales();
     _getCustomers(context);
   }
 
