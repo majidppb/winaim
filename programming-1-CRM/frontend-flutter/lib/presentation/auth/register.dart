@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:winaim/presentation/dashborad/dashboard.dart';
 import 'package:winaim/utils/api_endpoints.dart.dart';
-import 'package:winaim/utils/dio_provider.dart';
+import 'package:winaim/utils/auth.dart';
+import 'package:winaim/utils/dio.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -34,7 +35,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
     if (_key.currentState!.validate()) {
       try {
         final response = await dioProvider.post(ApiEndpoints.register,
-            // options: Options(headers: {'Authorization': 'Token $getToken()'}),
             data: jsonEncode(
                 {'username': _username.text, 'password': _password.text}));
 

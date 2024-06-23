@@ -1,15 +1,10 @@
-import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:winaim/utils/api_endpoints.dart.dart';
 
-final dioProvider = Dio(
-  BaseOptions(
-    baseUrl: ApiEndpoints.baseUrl,
-  ),
-);
-
-// Token persistance
 late final SharedPreferences prefs;
+
+bool isLoggedin() {
+  return prefs.getString('token') != null;
+}
 
 String? getToken() {
   return prefs.getString('token');

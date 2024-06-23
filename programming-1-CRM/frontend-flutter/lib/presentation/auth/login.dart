@@ -7,7 +7,8 @@ import 'package:go_router/go_router.dart';
 import 'package:winaim/presentation/auth/register.dart';
 import 'package:winaim/presentation/dashborad/dashboard.dart';
 import 'package:winaim/utils/api_endpoints.dart.dart';
-import 'package:winaim/utils/dio_provider.dart';
+import 'package:winaim/utils/auth.dart';
+import 'package:winaim/utils/dio.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

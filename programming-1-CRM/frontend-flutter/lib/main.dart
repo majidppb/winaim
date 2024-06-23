@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:winaim/router/router.dart';
 import 'package:winaim/utils/app_theme.dart';
-import 'package:winaim/utils/dio_provider.dart';
+import 'package:winaim/utils/auth.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
