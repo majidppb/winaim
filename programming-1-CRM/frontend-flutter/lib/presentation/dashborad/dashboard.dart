@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
@@ -80,6 +78,7 @@ class _DashboardScreenState extends State<DashboardScreen>
     try {
       await getSales();
     } catch (e) {
+      print(e);
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Sorry, something went wrong !'),
@@ -92,6 +91,7 @@ class _DashboardScreenState extends State<DashboardScreen>
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _getCustomers();
+      _getSales();
     });
 
     return Scaffold(

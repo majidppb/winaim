@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:winaim/domain/entities/customer.dart';
+import 'package:winaim/domain/entities/sale.dart';
 import 'package:winaim/presentation/auth/login.dart';
 import 'package:winaim/presentation/auth/register.dart';
 import 'package:winaim/presentation/dashborad/dashboard.dart';
@@ -38,7 +39,7 @@ final router = GoRouter(
         GoRoute(
           path: NewSaleScreen.path,
           pageBuilder: (context, state) =>
-              _getPage(state, const NewSaleScreen()),
+              _getPage(state, NewSaleScreen(sale: state.extra as Sale?)),
         ),
         GoRoute(
           path: NewInteractionScreen.path,

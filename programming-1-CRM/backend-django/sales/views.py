@@ -48,6 +48,7 @@ class InteractionAPI(APIView):
         return Response(serializer.data)
     
     def post(self, request):
+        print(request.data)
         serializer = InteractionSerializer(data = request.data)
 
         if serializer.is_valid():
